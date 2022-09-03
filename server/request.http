@@ -1,0 +1,19 @@
+POST http://localhost:5000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "thinhnger",
+  "password": "thinhnger123"
+}
+
+###
+POST http://localhost:5000/api/v1/auth/signup
+Content-Type: application/json
+
+{
+  "username": "thinhnger",
+  "password": "thinhnger123",
+  "confirmPassword":"thinhnger123"
+}
+
+###
