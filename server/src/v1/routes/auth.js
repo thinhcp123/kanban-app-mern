@@ -1,7 +1,7 @@
 const express = require('express')
-const router =express().Router()
+const router = express.Router()
 const userController = require('../controllers/user')
-const {body} = require('express-validator')
+const { body } = require('express-validator')
 const validation = require('../handlers/validation')
 const tokenHandler = require('../handlers/tokenHandler')
 const User = require('../model/user')
@@ -9,18 +9,18 @@ const User = require('../model/user')
 
 router.post(
     '/signup',
-    body('username').isLength({min: 8}).withMessage(
+    body('username').isLength({ min: 8 }).withMessage(
         'username must be at least 8 characters'
     ),
-    body('password').isLength({min: 8}).withMessage(
+    body('password').isLength({ min: 8 }).withMessage(
         'password must be at least 8 characters'
     ),
-    body('confirmPassword').isLength({min: 8}).withMessage(
+    body('confirmPassword').isLength({ min: 8 }).withMessage(
         'confirmPassword must be at least 8 characters'
     ),
-    body('username').custom(value=>{
-        return User.findOne({username: value}).then(user=>{
-            if (user){
+    body('username').custom(value => {
+        return User.findOne({ username: value }).then(user => {
+            if (user) {
                 return Promise.reject('username already used')
             }
         })

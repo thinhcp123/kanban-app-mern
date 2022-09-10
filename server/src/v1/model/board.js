@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const {Schema} = mongoose
+const { Schema } = mongoose
 const { schemaOptions } = require('./modelOptions')
 
 const boardSchema = new Schema({

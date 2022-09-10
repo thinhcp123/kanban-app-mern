@@ -1,5 +1,5 @@
 const express = require('express')
-const router =express().Router()
+const router = express.Router()
 const { param } = require('express-validator')
 const validation = require('../handlers/validation')
 const tokenHandler = require('../handlers/tokenHandler')

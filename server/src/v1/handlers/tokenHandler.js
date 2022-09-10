@@ -4,7 +4,7 @@ const User = require('../model/user')
 const tokenDecode = req => {
     const bearerHeader = req.headers['authorization']
     if (bearerHeader) {
-        const bearer = bearerHeader.splice(' ')[1]
+        const bearer = bearerHeader.split(' ')[1]
         try {
             const tokenDecoded = jwt.verify(bearer, process.env.TOKEN_SECRET_KEY)
             return tokenDecoded
@@ -18,12 +18,12 @@ const tokenDecode = req => {
 
 exports.verifyToken = async (req, res, next) => {
     const tokenDecoded = tokenDecode(req)
-    if (tokenDecoded){
+    if (tokenDecoded) {
         const user = await User.findById(tokenDecoded.id)
         if (!user) return res.status(401).json('Unathorized')
         req.user = user
         next()
-    }else{
+    } else {
         res.status(401).json('Unathorized')
     }
 }
